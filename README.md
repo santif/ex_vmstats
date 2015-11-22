@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/fanduel/ex_vmstats.svg?branch=master)](https://travis-ci.org/fanduel/ex_vmstats)
+
 # ExVmstats
 
 An Elixir package for pushing Erlang VM stats into StatsD, based on [ferd/vmstats](https://github.com/ferd/vmstats).
