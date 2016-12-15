@@ -46,7 +46,7 @@ Defaults are shown. The configuration options are:
 
 * **namespace**: This will be prepended to all metrics sent by ExVmStats, but will follow the ExStatsD namespace (if applicable).
 
-* **backend**: Out of the box, the only supported backend is ExStatsD. A custom backend module may be identified here. Backend modules must define the functions `&timing/2`, `&counter/2`, and one or both of `&gauge/2` and `&histogram/2`. The arguments passed to each are `(value, metric)`.
+* **backend**: Out of the box, the only supported backend is ExStatsD. A custom backend module may be identified here. Backend modules must define the functions `&timer/2`, `&counter/2`, and one or both of `&gauge/2` and `&histogram/2`. The arguments passed to each are `(value, metric)`.
 
 * **interval**: The number of milliseconds to wait between VM stats deliveries.
 

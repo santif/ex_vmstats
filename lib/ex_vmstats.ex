@@ -115,8 +115,8 @@ defmodule ExVmstats do
           for {sid, active, total} <- wall_time_diff(state.prev_sched, new_sched) do
             scheduler_metric_base = "#{namespace}.scheduler_wall_time.#{sid}"
 
-            backend.timing(active, scheduler_metric_base <> ".active")
-            backend.timing(total, scheduler_metric_base <> ".total")
+            backend.timer(active, scheduler_metric_base <> ".active")
+            backend.timer(total, scheduler_metric_base <> ".total")
           end
 
           new_sched

@@ -87,7 +87,7 @@ defmodule ExVmstatsTest do
 
     scheduler_metric_count = :erlang.system_info(:schedulers) * 2
 
-    assert match_count(~r/timing/, capture) == scheduler_metric_count
+    assert match_count(~r/timer/, capture) == scheduler_metric_count
     assert match_count(~r/scheduler_wall_time.(\d+)(.active|.total)/, capture) == scheduler_metric_count
 
     Application.put_env(:ex_vmstats, :sched_time, false)

@@ -11,7 +11,7 @@ defmodule ExVmstats.Backends.ExStatsD do
     ExStatsD.histogram(value, metric, sample_size: 1)
   end
 
-  def timing(value, metric) do
-    ExStatsD.timing(value, metric, sample_size: 1)
+  def timer(value, metric) do
+    ExStatsD.timer(value, metric, sample_size: 1)
   end
 end

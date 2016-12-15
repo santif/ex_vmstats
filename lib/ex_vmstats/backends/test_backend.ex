@@ -13,7 +13,7 @@ defmodule ExVmstats.TestBackend do
     Logger.info "histogram #{inspect {value, metric}}"
   end
 
-  def timing(value, metric) do
-    Logger.info "timing #{inspect {value, metric}}"
+  def timer(value, metric) do
+    Logger.info "timer #{inspect {value, metric}}"
   end
 end
