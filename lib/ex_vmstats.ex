@@ -25,7 +25,7 @@ defmodule ExVmstats do
       :erlang.statistics(:scheduler_wall_time)
       |> Enum.sort
 
-    backend = 
+    backend =
       Application.get_env(:ex_vmstats, :backend, :ex_statsd)
       |> get_backend
 
@@ -57,7 +57,7 @@ defmodule ExVmstats do
     gauge_or_hist(state, :erlang.system_info(:process_limit), metric_name.("proc_limit"))
 
     # Messages in queues
-    total_messages = 
+    total_messages =
       Enum.reduce Process.list, 0, fn pid, acc ->
         case Process.info(pid, :message_queue_len) do
           {:message_queue_len, count} -> count + acc
@@ -74,7 +74,7 @@ defmodule ExVmstats do
     gauge_or_hist(state, :erlang.statistics(:run_queue), metric_name.("run_queue"))
 
     # Error logger backlog (lower is better)
-    error_logger_backlog = 
+    error_logger_backlog =
       Process.whereis(:error_logger)
       |> Process.info(:message_queue_len)
       |> elem(1)
@@ -148,6 +148,8 @@ defmodule ExVmstats do
   defp sched_time_available? do
     try do
       :erlang.system_flag(:scheduler_wall_time, true)
+    else
+      _ -> true
     catch
       _ -> true
     rescue
