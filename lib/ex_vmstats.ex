@@ -15,7 +15,7 @@ defmodule ExVmstats do
     use_histogram = Application.get_env(:ex_vmstats, :use_histogram, false)
 
     sched_time =
-      case {sched_time_available?, Application.get_env(:ex_vmstats, :sched_time, false)} do
+      case {sched_time_available?(), Application.get_env(:ex_vmstats, :sched_time, false)} do
         {true, true} -> :enabled
         {true, _} -> :disabled
         {false, _} -> :unavailable
@@ -37,7 +37,7 @@ defmodule ExVmstats do
       interval: interval,
       sched_time: sched_time,
       prev_sched: prev_sched,
-      timer_ref: :erlang.start_timer(interval, self, @timer_msg),
+      timer_ref: :erlang.start_timer(interval, self(), @timer_msg),
       namespace: namespace,
       prev_io: {input, output},
       prev_gc: :erlang.statistics(:garbage_collection)
@@ -124,7 +124,7 @@ defmodule ExVmstats do
           nil
       end
 
-    timer_ref = :erlang.start_timer(interval, self, @timer_msg)
+    timer_ref = :erlang.start_timer(interval, self(), @timer_msg)
 
     {:noreply, %{state | timer_ref: timer_ref, prev_sched: sched, prev_io: {input, output}, prev_gc: gc}}
   end

@@ -8,10 +8,11 @@ defmodule ExVmstats.Mixfile do
      version: @version,
      elixir: "~> 1.1",
      description: "An Elixir package for pushing Erlang VM stats into StatsD.",
-     package: package,
+     package: package(),
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps]
+     deps: deps(),
+     xref: [exclude: [ExStatsD]]]
   end
 
   # Configuration for the OTP application
@@ -34,7 +35,7 @@ defmodule ExVmstats.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [{:ex_statsd, "~> 0.5", optional: true}]
   end
 
   defp package do
