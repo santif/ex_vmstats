@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/fanduel/ex_vmstats.svg?branch=master)](https://travis-ci.org/fanduel/ex_vmstats)
+[![Build Status](https://travis-ci.org/santif/ex_vmstats.svg?branch=master)](https://travis-ci.org/santif/ex_vmstats)
 
 # ExVmstats
 
