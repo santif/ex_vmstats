@@ -9,7 +9,7 @@ defmodule ExVmstatsTest do
     ~r/messages_in_queues/,
     ~r/modules/,
     ~r/run_queue/,
-    ~r/error_logger_queue_len/,
+    ~r/logger_queue_len/,
     ~r/io.bytes_in/,
     ~r/io.bytes_out/,
     ~r/gc.count/,

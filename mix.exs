@@ -6,7 +6,7 @@ defmodule ExVmstats.Mixfile do
   def project do
     [app: :ex_vmstats,
      version: @version,
-     elixir: "~> 1.1",
+     elixir: "~> 1.6.6",
      description: "An Elixir package for pushing Erlang VM stats into StatsD.",
      package: package(),
      build_embedded: Mix.env == :prod,

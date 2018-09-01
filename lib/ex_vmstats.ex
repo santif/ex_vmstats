@@ -73,13 +73,13 @@ defmodule ExVmstats do
     # Queued up processes (lower is better)
     gauge_or_hist(state, :erlang.statistics(:run_queue), metric_name.("run_queue"))
 
-    # Error logger backlog (lower is better)
-    error_logger_backlog =
-      Process.whereis(:error_logger)
+    # Logger backlog (lower is better)
+    logger_backlog =
+      Process.whereis(:logger)
       |> Process.info(:message_queue_len)
       |> elem(1)
 
-    gauge_or_hist(state, error_logger_backlog, metric_name.("error_logger_queue_len"))
+    gauge_or_hist(state, logger_backlog, metric_name.("logger_queue_len"))
 
     # Memory usage. There are more options available, but not all were kept.
     # Memory usage is in bytes.
